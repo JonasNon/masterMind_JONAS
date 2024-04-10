@@ -28,13 +28,59 @@ const getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-const generateHint = () =>  {
+
+let hint
+let coloredPegs = 0
+let whitePegs = 0
+let guessedLetters = '';
+const generateHint = (guess) =>  {
+  for (let i = 0; i < guess.length; i++) {
+    if (guessedLetters.includes(guess.charAt(i))) {
+      continue
+    } else if (guess.charAt(i) == solution.charAt(i)) {
+      coloredPegs += 1
+    } else if (solution.includes(guess.charAt(i))) {
+      whitePegs += 1
+    }
+    guessedLetters += guess.charAt(i)
+  }
+  hint = coloredPegs + "-" + whitePegs
+  coloredPegs = 0
+  whitePegs = 0
+  guessedLetters = ''
+
+  return hint
+
+  // if (exactlyRight) {
+  //   coloredPegs += 1
+  // } else {
+  //   whitePegs += 1
+  // }
   // your code here
 }
 
 const mastermind = (guess) => {
-  solution = 'abcd'; // Comment this out to generate a random solution
-  // your code here
+  // for (i = 0; i < guess.length; i++) {
+  //   if (guess[i] == solution[i]) {
+  //     generateHint(true)
+  //   } else if (solution.includes(guess[i])) {
+  //     generateHint(false)
+  //   }
+  // }
+  // console.log(guess)
+  board.push(guess)
+  if (solution == ''){
+    generateSolution()
+  }
+  
+  generateHint(guess)
+  coloredPegs = 0
+  whitePegs = 0
+  console.log(hint.slice(0,1))
+  if (hint.slice(0,1) == 4) {
+    return 'You guessed it!'
+  }
+  
 }
 
 
