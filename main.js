@@ -50,24 +50,10 @@ const generateHint = (guess) =>  {
   guessedLetters = ''
 
   return hint
-
-  // if (exactlyRight) {
-  //   coloredPegs += 1
-  // } else {
-  //   whitePegs += 1
-  // }
-  // your code here
 }
 
 const mastermind = (guess) => {
-  // for (i = 0; i < guess.length; i++) {
-  //   if (guess[i] == solution[i]) {
-  //     generateHint(true)
-  //   } else if (solution.includes(guess[i])) {
-  //     generateHint(false)
-  //   }
-  // }
-  // console.log(guess)
+  
   board.push(guess)
   if (solution == ''){
     generateSolution()
@@ -80,7 +66,6 @@ const mastermind = (guess) => {
   if (hint.slice(0,1) == 4) {
     return 'You guessed it!'
   }
-  
 }
 
 
