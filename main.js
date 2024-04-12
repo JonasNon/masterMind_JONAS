@@ -62,7 +62,8 @@ const mastermind = (guess) => {
   generateHint(guess)
   coloredPegs = 0
   whitePegs = 0
-  console.log(hint.slice(0,1))
+  console.log(hint)
+  // console.log(hint.slice(0,1))
   if (hint.slice(0,1) == 4) {
     return 'You guessed it!'
   }
@@ -72,7 +73,7 @@ const mastermind = (guess) => {
 const getPrompt = () =>  {
   rl.question('guess: ', (guess) => {
     mastermind(guess);
-    printBoard();
+    // printBoard();
     getPrompt();
   });
 }
